@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"time"
 )
 
 // OrganizeInPlace は、exeDir 直下のファイルを走査し、JPG/RAW に分類しつつ
@@ -47,7 +46,7 @@ func OrganizeInPlace(exeDir string) error {
 			}
 			dt = fi.ModTime()
 		}
-		dateFolder := dt.In(time.Local).Format("20060102") // YYYYMMDD
+		dateFolder := dt.Format("20060102") // YYYYMMDD
 
 		dstDir := filepath.Join(exeDir, top, dateFolder)
 		if err := os.MkdirAll(dstDir, 0755); err != nil {
